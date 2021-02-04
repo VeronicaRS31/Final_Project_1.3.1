@@ -306,7 +306,7 @@ def mini_game_3():
       mine_scissors()
     elif user_input== "rock":
       mine_rock()
-    else:
+    elif user_input== "paper":
       mine_paper()
   if user_input== "rock" and computer_output=="scissors":
     print("you won against the computer")
