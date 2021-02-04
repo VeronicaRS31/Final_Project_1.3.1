@@ -289,6 +289,7 @@ def arena():
 
 
 def mini_game_3():
+  screen_writer.speed(0)
   arena()
   user_input= input("What is your choice rock(rock), scissors(scissors), or paper(paper)")
   computer=["rock", "scissors","paper"]
