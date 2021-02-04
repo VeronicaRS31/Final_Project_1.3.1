@@ -26,7 +26,7 @@ wn.addshape("scissors.gif")
 wn.addshape("paper.gif")
 wn.addshape("rock.gif")
 
-
+# this is some functions for the rock paper scissors game and it's seeting up turtles shape to images
 scissors_shape_c=trtl.Turtle()
 scissors_shape_c.shape("scissors.gif")
 scissors_shape_c.hideturtle()
@@ -91,7 +91,7 @@ def mine_paper():
 
 
 
-
+# this function is for drawing circles and making it faster for computer to draw the eight ball
 def circles(radius):
   eight_ball.pd()
   eight_ball.begin_fill()
@@ -99,12 +99,13 @@ def circles(radius):
   eight_ball.end_fill()
   eight_ball.pu()
 
+ # this is what happens when the player clicks on the restart button
 def button_click(x,y):
   restart_button.hideturtle()
   screen_writer.clear()
 
 
-  
+ # this is the restart button shown as a yellow square on the screen
 def button(re_button):
   re_button.hideturtle
   re_button.fillcolor("yellow")
@@ -118,7 +119,7 @@ def button(re_button):
   screen_writer.write("Restart Button:",align="center",font= font_setup)
   restart_button.onclick(button_click)
 
-
+# draws the upside down triangle on the eight ball
 def upside_down_triangle():
   eight_ball.pencolor("white")
   eight_ball.penup()
@@ -132,7 +133,7 @@ def upside_down_triangle():
   eight_ball.forward(350)
   eight_ball.end_fill()
 
-
+#variable to set your score to 0
 score= 30
 score_update=False
 def score_decrease():#this takes 1 point of your score
@@ -182,19 +183,23 @@ def mini_game_1():
       not_yes=True
 
 
-
+# variables for mini_game_2
+#setting up a list of 4 letter words
 letters_words=["ALPE","OWLB","KDIS","INCO"]
 
+# function that draws timer in mini_game_2
 def draw_timer():
   counter.pu()
   counter.goto(400,300)
   counter.write(timer,font= ("Arial",30,"normal"))
 
+# the possible correct answer when unscrambling the 4 letter word
 AlPE_options=["LEAP","PALE","PLEA","PEAL"]
 OWLP_options=["BOWL","BLOW"]
 KDIS_options=["KIDS","SKID","DISK"]
 INCO_options=["ICON","COIN"]
 
+# this function makes the timer work
 def countdown():
   global timer, timer_up
   counter.clear()
@@ -210,8 +215,7 @@ def countdown():
     timer -= 1
     counter.getscreen().ontimer(countdown, counter_interval) 
 
-
-
+#this function contains all the elements that make up the second game
 def mini_game_2():
   font_setup = ("Arial",30, "normal")
   score_keeper.pu()
@@ -230,6 +234,7 @@ def mini_game_2():
   while word_guessed==False and score>0:
     draw_timer()
     countdown()
+    #this while loop checks if the user did a correct word with the letters given
     scramble_answer= input("So, What 4 letter word can you make with these letters").upper().strip()
     if choice=="ALPE":
       if scramble_answer in AlPE_options:
@@ -287,13 +292,15 @@ def arena():
   screen_writer.goto(175,200)
   screen_writer.write("Player 1",font=font_setup)
 
-
+# this function makes up all the elements for game #3
 def mini_game_3():
   screen_writer.speed(0)
   arena()
+  #it asks the player to pick between rocks,scissors  or paper and the computer randomly choses one from a list
   user_input= input("What is your choice rock(rock), scissors(scissors), or paper(paper)")
   computer=["rock", "scissors","paper"]
   computer_output= rand.choice(computer)
+  #these are just a set of if/elif/else statements that see if the player or computer won the match
   if user_input== computer_output:
     print("this was a tie")
     print("it was " + str(computer_output) + " from computer vs " + str(user_input) + " from your part" )
@@ -331,13 +338,16 @@ def mini_game_3():
     print("it was " +str(computer_output) +" from computer vs " + str(user_input) +" from your part" )
     mine_scissors()
     draw_paper()
-
+    
+#this is hiding all the turtles 
 score_keeper.hideturtle()
 maze.hideturtle()
 maze_runner.hideturtle()
 eight_ball.hideturtle()
 screen_writer.hideturtle()
+#the main program 
 def interactive_story():
+  #it bassically ask user to make decisions, and based on those decisions the program is ran
   answer= input("Do you want to play yes/no")
   if answer.lower().strip() == "yes":
     print("You're trapped inside a house,trying to escape.") 
@@ -417,7 +427,7 @@ def interactive_story():
   else:
     print("that's too bad, hopefully next time you play the game")
 
-
+# this call out the function to start and prints the socre of the player at the end
 interactive_story()
 print("you final score was: "+str(score))
 wn.mainloop()
